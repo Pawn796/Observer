@@ -1,0 +1,1095 @@
+.pos-side {
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 4px;
+    padding: 1px 8px 1px 8px;
+    font-weight: 500;
+    margin-left: 4px;
+}
+.pos-side.long {
+    background: #fce4ec;
+    color: #e91e63;
+}
+.pos-side.short {
+    background: #e8f5e9;
+    color: #388e3c;
+}
+
+/* 交易方向颜色（仅颜色逻辑） */
+.trade-side.long {
+    color: #e91e63;
+}
+.trade-side.short {
+    color: #388e3c;
+}
+.pnl-tooltip {
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1.5px dashed #b6ff3a;
+}
+.pnl-tooltip-popup {
+    /* use fixed positioning so tooltip escapes table/overflow clipping */
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #222;
+    color: #b6ff3a;
+    font-size: 13px;
+    padding: 7px 14px;
+    border-radius: 6px;
+    white-space: nowrap;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.28);
+    z-index: 99999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s, transform 0.12s;
+}
+.pnl-tooltip-popup:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 7px;
+    border-style: solid;
+    border-color: #222 transparent transparent transparent;
+}
+.pos-pnl.positive {
+    color: #4caf50;
+}
+.pos-pnl.negative {
+    color: #f44336;
+}
+.pos-mode-leverage {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+}
+.pos-mode {
+    display: inline-block;
+    background: #444;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+    padding: 1px 8px 1px 8px;
+    font-weight: 500;
+}
+
+/* 仅在历史仓位面板中隐藏“全仓/逐仓”标签文本（其他表格需显示） */
+[id^="history-holding"] .pos-mode,
+[id^="history-holding-"] .pos-mode {
+    display: none !important;
+}
+.pos-leverage {
+    display: inline-block;
+    background: #222;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+    padding: 1px 8px 1px 8px;
+    font-weight: 500;
+}
+/* 当前持仓表格卡片风格 */
+.position-row .pos-leverage-cell {
+    position: relative;
+    padding-left: 12px;
+}
+.position-row .pos-symbol {
+    font-weight: normal;
+    font-size: inherit;
+    margin-bottom: 2px;
+}
+.position-row .pos-leverage {
+    display: inline-block;
+    background: #222;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+    padding: 1px 7px 1px 7px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.position-row .pos-edit {
+    font-size: 12px;
+    color: #888;
+    margin-left: 4px;
+    cursor: pointer;
+}
+.data-table th.asset-index-col, .data-table td.asset-index-col {
+    width: 48px;
+    min-width: 32px;
+    max-width: 60px;
+    text-align: center;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.mini-chart-icon {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: color 0.12s, background 0.12s;
+    background: transparent;
+    border: none;
+    padding: 6px 8px;
+    border-radius: 6px;
+    color: var(--text-secondary);
+}
+.mini-chart-icon:hover {
+    color: var(--text-primary);
+    background: rgba(0,0,0,0.03);
+}
+.mini-chart-icon.chart-open-btn {
+    font-weight: normal;
+    color: var(--accent-color);
+}
+.mini-chart-icon.chart-open-btn:hover {
+    background: rgba(255,152,0,0.08);
+}
+
+/* Mobile adjustments */
+@media (max-width: 900px) {
+    .mini-chart-icon {
+        display: inline-block; /* keep icon visible on mobile for tap */
+        font-size: 20px;
+        margin-left: 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .mini-chart-tooltip {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        top: 70px;
+        bottom: 16px;
+        margin-left: 0;
+        background: #fff;
+        border-radius: 10px;
+        padding: 12px;
+        min-width: unset;
+        min-height: unset;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .mini-chart-tooltip .chart-controls {
+        top: 8px;
+        right: 8px;
+    }
+    .chart-controls .chart-range {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    .chart-canvas-wrap {
+        flex: 1 1 auto;
+        min-height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .chart-canvas-wrap canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    .chart-hover-value {
+        top: 8px;
+        left: 12px;
+    }
+
+    /* make tab buttons scrollable and larger on mobile */
+    .tab-buttons {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .tab-btn {
+        padding: 10px 12px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    /* allow horizontal scroll for tables on small screens */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .data-table {
+        min-width: 720px;
+    }
+}
+/* 迷你走势图浮层 */
+.mini-chart-tooltip {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin-left: 20px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+    border-radius: 10px;
+    padding: 18px 24px 18px 18px;
+    z-index: 9999;
+    min-width: 480px;
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+}
+
+/* mini-chart controls */
+.chart-controls {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 40; /* appear above canvas but below tooltip chrome */
+    display: flex;
+    gap: 8px;
+}
+.chart-controls .chart-range {
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.08);
+    color: #333;
+    font-size: 12px;
+    padding: 4px 8px;
+    margin-left: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+    .chart-controls .chart-range.active {
+        background: var(--accent-color);
+        color: #fff;
+        border-color: var(--accent-color);
+    }
+.chart-canvas-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 40px; /* reserve space for controls above the canvas to avoid overlap */
+}
+.chart-hover-value {
+    position: absolute;
+    pointer-events: none;
+    top: 8px;
+    left: 12px;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    z-index: 3;
+}
+
+/* overlay mask when mini-chart opens */
+.mini-chart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 9998;
+    display: none;
+}
+
+/* close button inside chart */
+.chart-close {
+    position: absolute;
+    right: 12px;
+    top: 12px; /* align with controls area */
+    z-index: 38; /* below controls but above canvas */
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* card-style tables for small screens */
+@media (max-width: 720px) {
+    .card-table tbody tr {
+        display: block;
+        margin: 10px 0;
+        border-radius: 8px;
+        background: transparent;
+        padding: 8px;
+        border: 1px solid rgba(0,0,0,0.06);
+    }
+    .card-table tbody tr td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 6px;
+        border: none;
+    }
+    .card-table tbody tr td:before {
+        content: attr(data-label);
+        color: #888;
+        margin-right: 8px;
+        flex: 0 0 46%;
+        text-align: left;
+        font-size: 13px;
+    }
+    .card-table thead { display: none; }
+}
+/* 更宽的窄屏断点，将常规表格转换为卡片式（用于平板和小笔记本） */
+@media (max-width: 880px) {
+    .positions-table,
+    .orders-table {
+        display: block;
+    }
+    .positions-table table,
+    .orders-table table {
+        display: block;
+        width: 100%;
+    }
+    .positions-table tbody tr,
+    .orders-table tbody tr {
+        display: block;
+        border: 1px solid rgba(0,0,0,0.06);
+        margin: 8px 0;
+        padding: 10px;
+        border-radius: 8px;
+        background: #fff;
+    }
+    .positions-table td,
+    .orders-table td {
+        display: block;
+        padding: 6px 0;
+    }
+    .positions-table td[data-label]:before,
+    .orders-table td[data-label]:before {
+        content: attr(data-label) ": ";
+        font-weight: 600;
+        color: #333;
+        width: 120px;
+        display: inline-block;
+    }
+}
+.account-balance-label {
+    position: relative;
+    cursor: pointer;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.5;
+    transition: background 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 70px;
+}
+
+/* 账户设置模态样式 */
+.account-settings-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+}
+.account-settings-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+}
+.account-settings-panel {
+    position: relative;
+    width: 560px;
+    max-width: calc(100% - 32px);
+    background: var(--bg-secondary);
+    border-radius: 10px;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+    z-index: 2;
+    overflow: hidden;
+}
+.settings-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-light);
+}
+.settings-header h3 { margin: 0; font-size: 16px; }
+.settings-close { background: transparent; border: none; font-size: 18px; cursor: pointer; }
+.settings-body { max-height: 360px; overflow: auto; padding: 12px 8px; }
+.account-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.account-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; background: var(--bg-primary); border: 1px solid rgba(0,0,0,0.04); }
+.account-item.dragging { opacity: 0.6; }
+.account-item {
+    transition: transform 220ms cubic-bezier(0.2,0,0,1), height 160ms ease, margin 160ms ease;
+}
+.account-item.placeholder { background: linear-gradient(90deg, rgba(0,0,0,0.03), rgba(0,0,0,0.02)); border-style: dashed; height: 44px; display:flex; align-items:center; }
+.account-handle { cursor: grab; width: 20px; height:20px; display:flex; align-items:center; justify-content:center; background:#f3f3f3; border-radius:4px; font-size:12px; color:#666; }
+.account-handle:active { cursor: grabbing; }
+.account-name { flex: 1; font-size: 14px; color: var(--text-primary); }
+.account-controls { display: flex; gap: 8px; align-items: center; }
+.account-controls button { background: transparent; border: none; cursor: pointer; padding: 6px; border-radius: 6px; }
+.account-controls .delete { color: #e63946; }
+.account-controls .visibility { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; }
+.settings-footer { display:flex; justify-content: space-between; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border-light); }
+.btn { padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+.btn-primary { background: var(--accent-color); color: #fff; border: none; }
+.btn-secondary { background: transparent; border: 1px solid var(--border-light); }
+
+/* Mobile: make modal full-width */
+@media (max-width: 720px) {
+    .account-settings-panel { width: 100%; height: 100%; max-width: 100%; border-radius: 0; }
+    .settings-body { max-height: calc(100% - 120px); }
+}
+
+/* 顶部导航 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+.status-online {
+    font-size: 12px;
+    color: #888;
+}
+
+.api-settings {
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.api-settings:hover {
+    border-color: var(--text-tertiary);
+    background: var(--bg-primary);
+}
+
+/* 账户卡片 */
+.account-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.card-header {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.card-header h2,
+.card-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge-blue,
+.badge-green {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.badge-blue {
+    background: #fff3e0;
+    color: var(--accent-color);
+}
+
+.badge-green {
+    background: #e8f5e9;
+    color: #388e3c;
+}
+
+.last-update {
+    font-size: 12px;
+    color: #999;
+    margin-top: 4px;
+}
+
+.trading-fee {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+}
+
+/* 余额网格 */
+.balance-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.balance-item {
+    padding: 0;
+}
+
+.balance-item label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.balance-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: 'Monaco', 'Courier New', monospace;
+    letter-spacing: 0.5px;
+}
+
+.balance-change {
+    font-size: 12px;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.balance-change.positive {
+    color: #4caf50;
+}
+
+.balance-change.negative {
+    color: #f44336;
+}
+
+.balance-change.neutral {
+    color: var(--text-tertiary);
+}
+
+/* 标签页 */
+.tabs {
+    margin-top: 24px;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 24px;
+}
+
+.tab-buttons {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-secondary);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    margin-bottom: -1px;
+}
+
+.tab-btn:hover {
+    color: var(--text-primary);
+}
+
+.tab-btn.active {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-tertiary);
+    font-size: 14px;
+}
+
+.empty-state p {
+    font-size: 14px;
+}
+
+/* 表格样式 */
+.table-container {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.data-table thead tr {
+    border-bottom: 1px solid var(--border-light);
+}
+
+.data-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    font-size: 12px;
+    white-space: nowrap;
+    cursor: move;
+    user-select: none;
+    position: relative;
+    transition: background 0.2s, box-shadow 0.2s, border 0.2s;
+    z-index: 1;
+}
+.data-table th.dragging {
+    background: var(--accent-color, #fff3e0);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(255,152,0,0.15);
+    opacity: 0.85;
+    z-index: 10;
+}
+.data-table th.drag-over {
+    border-right: 3px solid var(--accent-color, #ff9800);
+    background: #fff8f1;
+}
+
+.data-table th:has(.sort-btn) {
+    padding-right: 30px;
+}
+
+.data-table th .sort-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 10px;
+    color: var(--text-tertiary);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.data-table th .sort-btn:hover {
+    color: var(--accent-color);
+}
+
+.data-table th .sort-btn.asc::before {
+    content: '▲';
+    color: var(--accent-color);
+}
+
+.data-table th .sort-btn.desc::before {
+    content: '▼';
+    color: var(--accent-color);
+}
+
+.data-table th .sort-btn.none::before {
+    content: '⇅';
+}
+
+.data-table td {
+    padding: 12px 16px;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-light);
+}
+
+/* 保持止盈/止损两行样式一致 */
+.tp, .sl {
+    display: block;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+.tp { margin-bottom: 4px; }
+
+/* 当止盈/止损存在具体数值时的颜色 */
+.tp.has-value {
+    color: #39a853; /* green for take-profit */
+    font-weight: normal;
+}
+.sl.has-value {
+    color: #e63946; /* red for stop-loss */
+    font-weight: normal;
+}
+
+/* 历史委托中的收益颜色（正绿、负红），不加粗 */
+/* 历史委托中的收益颜色（正绿、负红），优先级匹配表格单元格 */
+.data-table td.history-profit-positive {
+    color: #39a853;
+    font-weight: normal;
+}
+.data-table td.history-profit-negative {
+    color: #e63946;
+    font-weight: normal;
+}
+
+/* 历史表：收益率颜色（%），不加粗 */
+/* 历史表：收益率颜色（%），优先级匹配表格单元格 */
+.data-table td.history-rate-positive {
+    color: #39a853;
+    font-weight: normal;
+}
+.data-table td.history-rate-negative {
+    color: #e63946;
+    font-weight: normal;
+}
+
+/* 历史仓位：已实现收益 / 已实现收益率，不加粗 */
+/* 历史仓位：已实现收益 / 已实现收益率，优先级匹配表格单元格 */
+.data-table td.realized-positive {
+    color: #39a853;
+    font-weight: normal;
+}
+.data-table td.realized-negative {
+    color: #e63946;
+    font-weight: normal;
+}
+
+.data-table tbody tr:hover {
+    background: var(--bg-primary);
+}
+
+.data-table .empty-row {
+    text-align: center;
+    color: var(--text-tertiary);
+    padding: 40px 20px;
+}
+
+/* 分页样式 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 12px 0;
+}
+
+.pagination-btn {
+    padding: 6px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-btn.active {
+    background: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
+}
+
+.pagination-info {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin: 0 8px;
+}
+
+/* 响应式设计 */
+
+/* 移动端优化：合理缩小按钮与标签，保持识别同时不过度占位，确保可点击 */
+@media (max-width: 900px) {
+    /* mini-chart 控件按钮尺寸（更紧凑，参考桌面比例） */
+    .chart-controls .chart-range {
+        min-width: 48px;
+        height: 28px;
+        padding: 4px 6px;
+        font-size: 12px;
+        border-radius: 5px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+    .chart-controls .chart-range:not(.active) {
+        border: 1px solid rgba(0,0,0,0.06);
+        background: transparent;
+    }
+    .chart-controls .chart-range.active {
+        padding: 6px 10px;
+    }
+
+    /* 关闭按钮尺寸更紧凑 */
+    .chart-close {
+        width: 30px;
+        height: 30px;
+        right: 8px;
+        top: 8px;
+        border-radius: 6px;
+        font-size: 13px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* 统一账户/杠杆标签为小而清晰的标识（不占太多空间） */
+    .pos-mode, .pos-leverage, .pos-side {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 24px;
+        min-width: 32px;
+        padding: 0 6px;
+        border-radius: 6px;
+        font-size: 12px;
+        box-sizing: border-box;
+    }
+
+    /* mini-chart 打开按钮在移动端尺寸适中并确保在最上层可点 */
+    .mini-chart-icon {
+        padding: 4px 6px;
+        border-radius: 6px;
+        font-size: 13px;
+        position: relative;
+        z-index: 1102; /* 提升到页面顶层，避免被覆盖 */
+        touch-action: manipulation;
+        pointer-events: auto;
+    }
+
+    /* 卡片式表格在移动端的字段标签更清晰 */
+    .positions-table td[data-label]:before,
+    .orders-table td[data-label]:before {
+        width: 110px;
+        font-weight: 500;
+        color: #666;
+    }
+}
+
+@media (max-width: 600px) {
+    /* 小屏下稍微放大一点触控目标，但仍保持紧凑 */
+    .chart-controls .chart-range {
+        min-width: 52px;
+        height: 30px;
+        font-size: 13px;
+        padding: 6px 8px;
+    }
+    .chart-close {
+        width: 32px;
+        height: 32px;
+    }
+    .pos-mode, .pos-leverage, .pos-side {
+        height: 26px;
+        min-width: 36px;
+        font-size: 12px;
+        padding: 0 7px;
+    }
+}
+@media (max-width: 900px) {
+    .container {
+        padding: 8px;
+        margin-top: 60px;
+    }
+    .balance-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    .card-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .tab-buttons {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+    .tab-btn {
+        white-space: nowrap;
+        padding: 10px 10px;
+        font-size: 13px;
+    }
+    .balance-value {
+        font-size: 20px;
+    }
+    .mini-chart-tooltip {
+        min-width: 220px;
+        min-height: 90px;
+        padding: 8px 8px 8px 8px;
+    }
+    .mini-chart-tooltip canvas {
+        width: 200px !important;
+        height: 80px !important;
+    }
+    .data-table th, .data-table td {
+        padding: 8px 6px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 2px;
+        margin-top: 48px;
+    }
+    .balance-grid {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 0;
+    }
+    .balance-item {
+        width: 50%;
+        box-sizing: border-box;
+        padding: 14px 10px 10px 10px;
+        border-bottom: 1px solid #222;
+        border-right: 1px solid #222;
+        background: var(--bg-secondary);
+        margin-bottom: 0;
+    }
+    .balance-item:nth-child(2n) {
+        border-right: none;
+    }
+    .balance-item:nth-child(3), .balance-item:nth-child(4) {
+        border-bottom: none;
+    }
+    .balance-item label {
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+    .balance-value {
+        font-size: 18px;
+        margin-bottom: 2px;
+    }
+    .balance-change {
+        font-size: 12px;
+    }
+    .mini-chart-tooltip {
+        min-width: 120px;
+        min-height: 50px;
+        padding: 4px 4px 4px 4px;
+    }
+    .mini-chart-tooltip canvas {
+        width: 100px !important;
+        height: 40px !important;
+    }
+    .data-table th, .data-table td {
+        padding: 4px 2px;
+        font-size: 10px;
+    }
+    .data-table {
+        font-size: 10px;
+    }
+}
+
+/* 浅色主题（默认） */
+:root {
+    --bg-primary: #faf8f3;
+    --bg-secondary: #fffef9;
+    --text-primary: #333;
+    --text-secondary: #666;
+    --text-tertiary: #999;
+    --border-color: #e8e8e8;
+    --border-light: #f0f0f0;
+    --accent-color: #ff9800;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* 深色主题 */
+html.dark-theme {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #e8e8e8;
+    --text-secondary: #b0b0b0;
+    --text-tertiary: #808080;
+    --border-color: #404040;
+    --border-light: #353535;
+    --accent-color: #ff9800;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme-toggle {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    border-color: var(--text-tertiary);
+    background: var(--bg-primary);
+}

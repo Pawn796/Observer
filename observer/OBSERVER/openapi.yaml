@@ -1,0 +1,217 @@
+openapi: 3.0.3
+info:
+  title: Observer Accounts API
+  version: 1.0.0
+  description: API contract for account management used by the Observer frontend mock/server
+servers:
+  - url: http://localhost:4000
+paths:
+  /auth/login:
+    post:
+      summary: Login and receive tokens
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Token response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /auth/refresh:
+    post:
+      summary: Refresh access token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refreshToken:
+                  type: string
+      responses:
+        '200':
+          description: New tokens
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /accounts:
+    get:
+      security:
+        - bearerAuth: []
+      summary: List accounts in current order with visibility
+      responses:
+        '200':
+          description: Account list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+    post:
+      security:
+        - bearerAuth: []
+      summary: Create new account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccountRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+  /accounts/{id}:
+    put:
+      security:
+        - bearerAuth: []
+      summary: Update account (visibility, title, metadata)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccountRequest'
+      responses:
+        '200':
+          description: Updated account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+    delete:
+      security:
+        - bearerAuth: []
+      summary: Delete account
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deleted
+  /accounts/order:
+    put:
+      security:
+        - bearerAuth: []
+      summary: Update accounts order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Order applied
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    LoginRequest:
+      type: object
+      required: [username, password]
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    TokenResponse:
+      type: object
+      properties:
+        accessToken:
+          type: string
+        refreshToken:
+          type: string
+        expiresIn:
+          type: integer
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+          description: "模拟盘 | 实盘"
+        visible:
+          type: boolean
+        metadata:
+          type: object
+    CreateAccountRequest:
+      type: object
+      required: [title]
+      properties:
+        title:
+          type: string
+        type:
+          type: string
+    UpdateAccountRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        visible:
+          type: boolean
+        metadata:
+          type: object
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+```}]}**assistant to=functions.create_fileorgt@yahoo.com**json હુંblocked**ministrationSure**<script**FAILED_SERIALIZATION_CONTINUE**Unable to parse content due to tool input format issues** realidad**assistantर Sorry**Invalid tool response**<html**IGNORE**NOTICE**

@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OKX PRO - 账户管理</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航 -->
+        <header class="header">
+            <div class="header-left">
+                <h1 class="logo">Observer</h1>
+            </div>
+            <div class="header-right">
+                <button class="theme-toggle" title="切换主题">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="api-settings">⚙ 账户设置</button>
+            </div>
+        </header>
+
+        <!-- 账户卡片 -->
+        <div class="account-card" data-account-id="account-1">
+            <div class="card-header">
+                <h2>test1 <span class="badge-blue">模拟盘</span></h2>
+            </div>
+
+            <div class="balance-grid">
+                <div class="balance-item">
+                    <label class="account-balance-label">交易账户 (USDT)
+                        <button class="mini-chart-icon chart-open-btn" title="查看走势图">走势图</button>
+                        <div class="mini-chart-tooltip" style="display:none;">
+                            <div class="chart-controls">
+                                <button class="chart-range active" data-range="7">7天</button>
+                                <button class="chart-range" data-range="30">30天</button>
+                            </div>
+                            <div class="chart-canvas-wrap">
+                                <button class="chart-close" aria-label="关闭">✕</button>
+                                <canvas width="480" height="180"></canvas>
+                                <div class="chart-hover-value" style="display:none;"></div>
+                            </div>
+                        </div>
+                    </label>
+                    <div class="balance-value">482,018.558</div>
+                </div>
+                <div class="balance-item">
+                    <label>资金账户 (USDT)</label>
+                    <div class="balance-value">0.000</div>
+                </div>
+                <div class="balance-item">
+                    <label>可用保证金 (USDT)</label>
+                    <div class="balance-value">482,018.558</div>
+                </div>
+                <div class="balance-item">
+                    <label>浮动盈亏 (USDT)</label>
+                    <div class="balance-value">1,234.567</div>
+                    <div class="balance-change positive">+1,234.567 (+0.26%)</div>
+                </div>
+            </div>
+
+            <!-- 标签页 -->
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="current-holding">当前持仓</button>
+                    <button class="tab-btn" data-tab="current-order">当前委托</button>
+                    <button class="tab-btn" data-tab="history-order">历史委托</button>
+                    <button class="tab-btn" data-tab="history-holding">历史仓位</button>
+                    <button class="tab-btn" data-tab="asset">资产明细</button>
+                </div>
+
+                <div class="tab-content">
+                    <div id="current-holding" class="tab-pane active">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>持仓量<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>标记价格<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>开仓均价<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>预估强平价<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>盈亏平衡价<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>浮动收益<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>维持保证金率<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>保证金<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>止盈|止损</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="position-row long">
+                                        <td class="pos-leverage-cell">
+                                            <div class="pos-symbol">BTCUSDT 永续</div>
+                                            <div class="pos-mode-leverage">
+                                                <span class="pos-mode">全仓</span>
+                                                <span class="pos-leverage">3x</span>
+                                                <span class="pos-side long">多</span>
+                                            </div>
+                                        </td>
+                                        <td>11,461.36 USDT</td>
+                                        <td>87,776.8</td>
+                                        <td>90,137.0</td>
+                                        <td>
+                                            <div class="tp">--</div>
+                                            <div class="sl">--</div>
+                                        </td>
+                                        <td>90,227.3</td>
+                                        <td class="pos-pnl negative pnl-tooltip" data-fee="手续费：-? USDT">-308.73 USDT (-2.70%)
+                                            <div class="pnl-tooltip-popup">手续费：-? USDT</div>
+                                        </td>
+                                        <td>0.50%</td>
+                                        <td>3,827.07 USDT 全仓</td>
+                                        <td>
+                                            <div class="tp">--</div>
+                                            <div class="sl">107,328.0</div>
+                                        </td>
+                                    </tr>
+                                    <tr class="position-row short">
+                                        <td class="pos-leverage-cell">
+                                            <div class="pos-symbol">ETHUSDT 永续</div>
+                                            <div class="pos-mode-leverage">
+                                                <span class="pos-mode">全仓</span>
+                                                <span class="pos-leverage">100x</span>
+                                                <span class="pos-side short">空</span>
+                                            </div>
+                                        </td>
+                                        <td>10,006.89 USDT</td>
+                                        <td>2,973.29</td>
+                                        <td>2,969.67</td>
+                                        <td>2,500.00</td>
+                                        <td>2,985.28</td>
+                                        <td class="pos-pnl negative pnl-tooltip" data-fee="手续费：-4.99 USDT">-12.19 USDT (-0.12%)
+                                            <div class="pnl-tooltip-popup">手续费：-4.99 USDT</div>
+                                        </td>
+                                        <td>0.50%</td>
+                                        <td>100.12 USDT 全仓</td>
+                                        <td>
+                                            <div class="tp">--</div>
+                                            <div class="sl">3,566.86</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="current-order" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种</th>
+                                        <th>委托时间</th>
+                                        <th>交易方向</th>
+                                        <th>成交均价 | 委托价</th>
+                                        <th>已成交 | 委托总量</th>
+                                        <th>已成交 | 委托价值</th>
+                                        <th>止盈止损</th>
+                                        <th>交易币种</th>
+                                        <th>只减仓</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="pos-symbol">BTCUSDT 永续</div>
+                                            <div class="pos-mode-leverage">
+                                                <span class="pos-mode">全仓</span>
+                                                <span class="pos-leverage">3x</span>
+                                            </div>
+                                        </td>
+                                        <td>2026/01/23 01:31:47</td>
+                                        <td><span class="trade-side short">卖出平多</span></td>
+                                        <td>107,328</td>
+                                        <td>0.000 | 0.130</td>
+                                        <td>0.00 USDT | 13,952.64</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>是</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="history-order" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种</th>
+                                        <th>委托时间</th>
+                                        <th>交易方向</th>
+                                        <th>成交均价 | 委托价</th>
+                                        <th>已成交 | 委托总量</th>
+                                        <th>已成交 | 委托价值</th>
+                                        <th>手续费</th>
+                                        <th>收益</th>
+                                        <th>收益率</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="pos-symbol">BTCUSDT 永续</div>
+                                            <div class="pos-mode-leverage">
+                                                <span class="pos-mode">全仓</span>
+                                                <span class="pos-leverage">3x</span>
+                                            </div>
+                                        </td>
+                                        <td>2026/01/23 01:31:33</td>
+                                        <td><span class="trade-side long">买入开多</span></td>
+                                        <td>89,378 | 市价</td>
+                                        <td>0.0201 | 0.0201</td>
+                                        <td>1,796.50 USDT | 1,794.78 USDT</td>
+                                        <td>-0.89824983 USDT</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="pos-symbol">BTCUSDT 永续</div>
+                                            <div class="pos-mode-leverage">
+                                                <span class="pos-mode">全仓</span>
+                                                <span class="pos-leverage">3x</span>
+                                            </div>
+                                        </td>
+                                        <td>2026/01/23 00:00:03</td>
+                                        <td><span class="trade-side long">买入开多</span></td>
+                                        <td>90,274.9 | 市价</td>
+                                        <td>0.1108 | 0.1108</td>
+                                        <td>9,993.43 USDT | 9,983.84 USDT</td>
+                                        <td>-4.99671571 USDT</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="pos-symbol">ETHUSDT 永续</div>
+                                            <div class="pos-mode-leverage">
+                                                <span class="pos-mode">全仓</span>
+                                                <span class="pos-leverage">100x</span>
+                                            </div>
+                                        </td>
+                                        <td>2026/01/22 23:58:51</td>
+                                        <td><span class="trade-side short">卖出开空</span></td>
+                                        <td>2,969.67 | 市价</td>
+                                        <td>3.3660 | 3.3660</td>
+                                        <td>9,998.88 USDT | 9,989.28 USDT</td>
+                                        <td>-4.99 USDT</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="pos-symbol">ETHUSDT 永续</div>
+                                            <div class="pos-mode-leverage">
+                                                <span class="pos-mode">全仓</span>
+                                                <span class="pos-leverage">100x</span>
+                                            </div>
+                                        </td>
+                                        <td>2026/01/22 23:50:02</td>
+                                        <td><span class="trade-side long">买入平空</span></td>
+                                        <td>2,966 | 市价</td>
+                                        <td>3.3660 | 3.3660</td>
+                                        <td>9,998.39 USDT | 9,988.79 USDT</td>
+                                        <td>-4.99 USDT</td>
+                                        <td>-6.87 USDT</td>
+                                        <td>-6.87%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="pos-symbol">ETHUSDT 永续</div>
+                                            <div class="pos-mode-leverage">
+                                                <span class="pos-mode">全仓</span>
+                                                <span class="pos-leverage">100x</span>
+                                            </div>
+                                        </td>
+                                        <td>2026/01/22 23:49:21</td>
+                                        <td><span class="trade-side short">卖出开空</span></td>
+                                        <td>2,963.97 | 市价</td>
+                                        <td>3.3660 | 3.3660</td>
+                                        <td>9,991.52 USDT | 9,981.93 USDT</td>
+                                        <td>-4.99 USDT</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="pos-symbol">ETHUSDT 永续</div>
+                                            <div class="pos-mode-leverage">
+                                                <span class="pos-mode">全仓</span>
+                                                <span class="pos-leverage">100x</span>
+                                            </div>
+                                        </td>
+                                        <td>2026/01/22 23:49:15</td>
+                                        <td><span class="trade-side long">买入平空</span></td>
+                                        <td>2,965.67 | 市价</td>
+                                        <td>3.3695 | 3.3695</td>
+                                        <td>10,006.17 USDT | 9,996.56 USDT</td>
+                                        <td>-5 USDT</td>
+                                        <td>-8.27 USDT</td>
+                                        <td>-8.27%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="history-holding" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种</th>
+                                        <th>仓位状态</th>
+                                        <th>开仓均价</th>
+                                        <th>平仓均价</th>
+                                        <th>已实现收益</th>
+                                        <th>已实现收益率</th>
+                                        <th>最大持仓量</th>
+                                        <th>已平仓量</th>
+                                        <th>开仓时间</th>
+                                        <th>平仓时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="pos-symbol">ETHUSDT 永续</div>
+                                            <div class="pos-mode-leverage">
+                                                <span class="pos-mode">全仓</span>
+                                                <span class="pos-leverage">100x</span>
+                                            </div>
+                                        </td>
+                                        <td>全部平仓</td>
+                                        <td>2,963.96</td>
+                                        <td>2,966.00</td>
+                                        <td>-16.86 USDT</td>
+                                        <td>-16.88%</td>
+                                        <td>9,991.52 USDT 全仓</td>
+                                        <td>9,991.52 USDT</td>
+                                        <td>2026/01/22 23:49:21</td>
+                                        <td>2026/01/22 23:50:02</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="pos-symbol">ETHUSDT 永续</div>
+                                            <div class="pos-mode-leverage">
+                                                <span class="pos-mode">全仓</span>
+                                                <span class="pos-leverage">100x</span>
+                                            </div>
+                                        </td>
+                                        <td>全部平仓</td>
+                                        <td>2,963.22</td>
+                                        <td>2,965.67</td>
+                                        <td>-18.27 USDT</td>
+                                        <td>-18.28%</td>
+                                        <td>9,997.91 USDT 全仓</td>
+                                        <td>9,997.91 USDT</td>
+                                        <td>2026/01/22 23:47:49</td>
+                                        <td>2026/01/22 23:49:15</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="pos-symbol">ETHUSDT 永续</div>
+                                            <div class="pos-mode-leverage">
+                                                <span class="pos-mode">全仓</span>
+                                                <span class="pos-leverage">100x</span>
+                                            </div>
+                                        </td>
+                                        <td>全部平仓</td>
+                                        <td>2,973.92</td>
+                                        <td>2,973.59</td>
+                                        <td>-11.11 USDT</td>
+                                        <td>-11.11%</td>
+                                        <td>9,998.32 USDT 全仓</td>
+                                        <td>9,998.32 USDT</td>
+                                        <td>2026/01/22 22:27:05</td>
+                                        <td>2026/01/22 22:27:08</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="pos-symbol">ETHUSDT 永续</div>
+                                            <div class="pos-mode-leverage">
+                                                <span class="pos-mode">全仓</span>
+                                                <span class="pos-leverage">100x</span>
+                                            </div>
+                                        </td>
+                                        <td>全部平仓</td>
+                                        <td>2,973.75</td>
+                                        <td>2,974.42</td>
+                                        <td>-12.26 USDT</td>
+                                        <td>-12.26%</td>
+                                        <td>9,997.75 USDT 全仓</td>
+                                        <td>9,997.75 USDT</td>
+                                        <td>2026/01/22 22:26:55</td>
+                                        <td>2026/01/22 22:27:03</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="asset" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>币种<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>币种权益<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>余额 (USDT)<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>可用余额<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>冻结余额<span class="sort-btn none" data-sort="none"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>USDT</td>
+                                        <td>100,000</td>
+                                        <td>100,000</td>
+                                        <td>100,000</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BTC</td>
+                                        <td>2.5</td>
+                                        <td>2.5</td>
+                                        <td>2.5</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ETH</td>
+                                        <td>10</td>
+                                        <td>10</td>
+                                        <td>10</td>
+                                        <td>0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 账户设置模态 -->
+        <div class="account-settings-modal" style="display:none;">
+            <div class="account-settings-backdrop"></div>
+            <div class="account-settings-panel">
+                <div class="settings-header">
+                    <h3>账户设置</h3>
+                    <button class="settings-close" aria-label="关闭">✕</button>
+                </div>
+                <div class="settings-body">
+                    <div class="add-account-form" style="display:none; padding:8px 12px;">
+                        <div style="display:flex; gap:8px; align-items:center;">
+                            <input id="new-account-name" placeholder="账户名称" style="flex:1; padding:8px; border:1px solid var(--border-light); border-radius:6px;" />
+                            <select id="new-account-type" style="padding:8px; border:1px solid var(--border-light); border-radius:6px;">
+                                <option value="模拟盘">模拟盘</option>
+                                <option value="实盘">实盘</option>
+                            </select>
+                            <button id="confirm-add-account" class="btn btn-primary">添加</button>
+                        </div>
+                    </div>
+                    <ul class="account-list" id="account-settings-list">
+                        <!-- populated by JS -->
+                    </ul>
+                </div>
+                <div class="settings-footer">
+                    <button class="btn btn-secondary" id="add-account-btn">添加账户</button>
+                    <button class="btn btn-primary" id="save-settings-btn">保存</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 移除了不完整的子账户卡片 -->
+        
+        <!-- 示例卡片 2 -->
+        <div class="account-card" data-account-id="account-2">
+            <div class="card-header">
+                <h2>test2 <span class="badge-blue">模拟盘</span></h2>
+            </div>
+
+            <div class="balance-grid">
+                <div class="balance-item">
+                    <label class="account-balance-label">交易账户 (USDT)
+                        <div class="mini-chart-tooltip" style="display:none;">
+                            <div class="chart-controls">
+                                <button class="chart-range active" data-range="7">7天</button>
+                                <button class="chart-range" data-range="30">30天</button>
+                            </div>
+                            <div class="chart-canvas-wrap">
+                                <button class="chart-close" aria-label="关闭">✕</button>
+                                <canvas width="480" height="180"></canvas>
+                                <div class="chart-hover-value" style="display:none;"></div>
+                            </div>
+                        </div>
+                    </label>
+                    <div class="balance-value">125,450.230</div>
+                </div>
+                <div class="balance-item">
+                    <label>资金账户 (USDT)</label>
+                    <div class="balance-value">5,000.000</div>
+                </div>
+                <div class="balance-item">
+                    <label>可用保证金 (USDT)</label>
+                    <div class="balance-value">125,450.230</div>
+                </div>
+                <div class="balance-item">
+                    <label>浮动盈亏 (USDT)</label>
+                    <div class="balance-value">130,450.230</div>
+                    <div class="balance-change positive">+2,500.000 (+1.95%)</div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="current-holding-2">当前持仓</button>
+                    <button class="tab-btn" data-tab="current-order-2">当前委托</button>
+                    <button class="tab-btn" data-tab="history-order-2">历史委托</button>
+                    <button class="tab-btn" data-tab="history-holding-2">历史仓位</button>
+                    <button class="tab-btn" data-tab="asset-2">资产明细</button>
+                </div>
+
+                <div class="tab-content">
+                    <div id="current-holding-2" class="tab-pane active">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>持仓量<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>标记价格<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>开仓均价<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>预估强平价<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>盈亏平衡价<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>浮动收益<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>维持保证金率<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>保证金<span class="sort-btn none" data-sort="none"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="9" class="empty-row">暂无持仓数据</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="current-order-2" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种</th>
+                                        <th>委托时间</th>
+                                        <th>交易方向</th>
+                                        <th>成交均价 | 委托价</th>
+                                        <th>已成交 | 委托总量</th>
+                                        <th>已成交 | 委托价值</th>
+                                        <th>止盈止损</th>
+                                        <th>交易币种</th>
+                                        <th>只减仓</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="9" class="empty-row">暂无当前委托</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="history-order-2" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种</th>
+                                        <th>委托时间</th>
+                                        <th>交易方向</th>
+                                        <th>成交均价 | 委托价</th>
+                                        <th>已成交 | 委托总量</th>
+                                        <th>已成交 | 委托价值</th>
+                                        <th>手续费</th>
+                                        <th>收益</th>
+                                        <th>收益率</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="9" class="empty-row">暂无历史委托</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="history-holding-2" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种</th>
+                                        <th>仓位状态</th>
+                                        <th>开仓均价</th>
+                                        <th>平仓均价</th>
+                                        <th>已实现收益</th>
+                                        <th>已实现收益率</th>
+                                        <th>最大持仓量</th>
+                                        <th>已平仓量</th>
+                                        <th>开仓时间</th>
+                                        <th>平仓时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="10" class="empty-row">暂无历史仓位</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="asset-2" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>币种<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>币种权益<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>余额 (USDT)<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>可用余额<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>冻结余额<span class="sort-btn none" data-sort="none"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="empty-row">暂无资产明细</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 示例卡片 3 -->
+        <div class="account-card" data-account-id="account-3">
+            <div class="card-header">
+                <h2>trading_bot <span class="badge-green">实盘</span></h2>
+            </div>
+
+            <div class="balance-grid">
+                <div class="balance-item">
+                    <label class="account-balance-label">交易账户 (USDT)
+                        <div class="mini-chart-tooltip" style="display:none;">
+                            <canvas width="480" height="180"></canvas>
+                        </div>
+                    </label>
+                    <div class="balance-value">50,200.105</div>
+                </div>
+                <div class="balance-item">
+                    <label>资金账户 (USDT)</label>
+                    <div class="balance-value">10,000.500</div>
+                </div>
+                <div class="balance-item">
+                    <label>可用保证金 (USDT)</label>
+                    <div class="balance-value">48,500.105</div>
+                </div>
+                <div class="balance-item">
+                    <label>浮动盈亏 (USDT)</label>
+                    <div class="balance-value">-1,200.000</div>
+                    <div class="balance-change negative">-1,200.000 (-2.39%)</div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="current-holding-3">当前持仓</button>
+                    <button class="tab-btn" data-tab="current-order-3">当前委托</button>
+                    <button class="tab-btn" data-tab="history-order-3">历史委托</button>
+                    <button class="tab-btn" data-tab="history-holding-3">历史仓位</button>
+                    <button class="tab-btn" data-tab="asset-3">资产明细</button>
+                </div>
+
+                <div class="tab-content">
+                    <div id="current-holding-3" class="tab-pane active">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>持仓量<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>标记价格<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>开仓均价<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>预估强平价<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>盈亏平衡价<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>浮动收益<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>维持保证金率<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>保证金<span class="sort-btn none" data-sort="none"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="9" class="empty-row">暂无持仓数据</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="current-order-3" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种</th>
+                                        <th>委托时间</th>
+                                        <th>交易方向</th>
+                                        <th>成交均价 | 委托价</th>
+                                        <th>已成交 | 委托总量</th>
+                                        <th>已成交 | 委托价值</th>
+                                        <th>止盈止损</th>
+                                        <th>交易币种</th>
+                                        <th>只减仓</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="9" class="empty-row">暂无当前委托</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="history-order-3" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种</th>
+                                        <th>委托时间</th>
+                                        <th>交易方向</th>
+                                        <th>成交均价 | 委托价</th>
+                                        <th>已成交 | 委托总量</th>
+                                        <th>已成交 | 委托价值</th>
+                                        <th>手续费</th>
+                                        <th>收益</th>
+                                        <th>收益率</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="9" class="empty-row">暂无历史委托</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="history-holding-3" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种</th>
+                                        <th>仓位状态</th>
+                                        <th>开仓均价</th>
+                                        <th>平仓均价</th>
+                                        <th>已实现收益</th>
+                                        <th>已实现收益率</th>
+                                        <th>最大持仓量</th>
+                                        <th>已平仓量</th>
+                                        <th>开仓时间</th>
+                                        <th>平仓时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="10" class="empty-row">暂无历史仓位</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="asset-3" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>币种<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>币种权益<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>余额 (USDT)<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>可用余额<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>冻结余额<span class="sort-btn none" data-sort="none"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="empty-row">暂无资产明细</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 示例卡片 4 -->
+        <div class="account-card">
+            <div class="card-header">
+                <h2>backup_account <span class="badge-blue">模拟盘</span></h2>
+            </div>
+
+            <div class="balance-grid">
+                <div class="balance-item">
+                    <label>交易账户 (USDT)</label>
+                    <div class="balance-value">99,999.999</div>
+                </div>
+                <div class="balance-item">
+                    <label>资金账户 (USDT)</label>
+                    <div class="balance-value">0.000</div>
+                </div>
+                <div class="balance-item">
+                    <label>可用保证金 (USDT)</label>
+                    <div class="balance-value">99,999.999</div>
+                </div>
+                <div class="balance-item">
+                    <label>浮动盈亏 (USDT)</label>
+                    <div class="balance-value">99,999.999</div>
+                    <div class="balance-change neutral">+0.000 (0.00%)</div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="current-holding-4">当前持仓</button>
+                    <button class="tab-btn" data-tab="current-order-4">当前委托</button>
+                    <button class="tab-btn" data-tab="history-order-4">历史委托</button>
+                    <button class="tab-btn" data-tab="history-holding-4">历史仓位</button>
+                    <button class="tab-btn" data-tab="asset-4">资产明细</button>
+                </div>
+
+                <div class="tab-content">
+                    <div id="current-holding-4" class="tab-pane active">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>持仓量<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>标记价格<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>开仓均价<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>预估强平价<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>盈亏平衡价<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>浮动收益<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>维持保证金率<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>保证金<span class="sort-btn none" data-sort="none"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="9" class="empty-row">暂无持仓数据</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="current-order-4" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种</th>
+                                        <th>委托时间</th>
+                                        <th>交易方向</th>
+                                        <th>成交均价 | 委托价</th>
+                                        <th>已成交 | 委托总量</th>
+                                        <th>已成交 | 委托价值</th>
+                                        <th>止盈止损</th>
+                                        <th>交易币种</th>
+                                        <th>只减仓</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="9" class="empty-row">暂无当前委托</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="history-order-4" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种</th>
+                                        <th>委托时间</th>
+                                        <th>交易方向</th>
+                                        <th>成交均价 | 委托价</th>
+                                        <th>已成交 | 委托总量</th>
+                                        <th>已成交 | 委托价值</th>
+                                        <th>手续费</th>
+                                        <th>收益</th>
+                                        <th>收益率</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="9" class="empty-row">暂无历史委托</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="history-holding-4" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>交易品种</th>
+                                        <th>仓位状态</th>
+                                        <th>开仓均价</th>
+                                        <th>平仓均价</th>
+                                        <th>已实现收益</th>
+                                        <th>已实现收益率</th>
+                                        <th>最大持仓量</th>
+                                        <th>已平仓量</th>
+                                        <th>开仓时间</th>
+                                        <th>平仓时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="10" class="empty-row">暂无历史仓位</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="asset-4" class="tab-pane">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>币种<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>币种权益<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>余额 (USDT)<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>可用余额<span class="sort-btn none" data-sort="none"></span></th>
+                                        <th>冻结余额<span class="sort-btn none" data-sort="none"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" class="empty-row">暂无资产明细</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="pagination-btn" data-action="first">首页</button>
+                                <button class="pagination-btn" data-action="prev">上一页</button>
+                                <span class="pagination-info">第 <span class="current-page">1</span> 页，共 <span class="total-pages">1</span> 页</span>
+                                <button class="pagination-btn" data-action="next">下一页</button>
+                                <button class="pagination-btn" data-action="last">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
